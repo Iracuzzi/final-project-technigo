@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
+    "batch": "^0.6.1",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.6.2",
+    "sort-by": "^1.2.0",
+    "styled-components": "^5.3.6"
   },
   "scripts": {
     "start": "react-scripts start",
