@@ -61,14 +61,14 @@ const LoginPage = () => {
           <h2>Enter with your account to get acces to all the features.</h2>
         </Text>
         <form onSubmit={onFormSubmit} onChange={()=>setMode("login")}>
-        <input 
+        <Input 
             required
             type="text"
             id="username"
             value={username}
             onChange={e => setUsername(e.target.value)}
             placeholder='Username' />
-        <input
+        <Input
             required 
             type="password" 
             id="password" 

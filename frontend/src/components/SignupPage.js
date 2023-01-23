@@ -63,21 +63,21 @@ const onFormSubmit =(event) => {
                   <h2>Create a new account to enjoy the features.</h2>
                 </Text>
                 <form onSubmit={onFormSubmit}>
-                <input 
+                <Input 
             required
             type="text"
             id="nickname"
             value={nickname}
             onChange={e => setNickname(e.target.value)}
             placeholder='Nickname' />
-              <input 
+              <Input 
             required
             type="text"
             id="username"
             value={username}
             onChange={e => setUsername(e.target.value)}
             placeholder='Username' />
-        <input
+        <Input
             required 
             type="password" 
             id="password" 
