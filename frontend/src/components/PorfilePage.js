@@ -9,7 +9,7 @@ const PorfilePage = () => {
       </Header>
       <ParentElement>
         <Container>
-
+      
         </Container>
       </ParentElement>
       </>

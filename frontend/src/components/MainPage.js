@@ -13,7 +13,7 @@ const MainContent = () => {
       <Text>Online character creator for D&D players</Text>
     </Header>
     <ParentElement>
-      <Link to={`/character`} title="Go to see your Characters">
+      <Link to={`/character`} title="Go to create your Character">
         <Container Image>
           <Image src={CreateCharacter} alt="Creation character page"/>
         </Container>
