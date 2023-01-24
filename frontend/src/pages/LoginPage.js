@@ -54,6 +54,9 @@ const LoginPage = () => {
     <Header>
       <Text Header>Online character creator for D&D players</Text>
     </Header>
+    <Link to={"/"} >
+        <Text Back> ← Back</Text>
+    </Link>
     <ParentElement>
       <Container>
         <Text>
@@ -74,8 +77,8 @@ const LoginPage = () => {
             id="password" 
             placeholder="password"
             value={password} 
-            onChange={e => setPassword(e.target.value)}/>
-        <button onSubmit={onFormSubmit}>Log in</button>
+            onChange={e => setPassword(e.target.value)}/><br></br>
+        <Button onSubmit={onFormSubmit}>Log in</Button>
         </form>
         <Link to={"/signup"} >
         <Text Create>Create an acount</Text>
@@ -101,7 +104,6 @@ const ParentElement = styled.div`
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  background-color: rgb(85, 128, 162);
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -114,7 +116,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 600px;
-  width: 500px;
+  width: 400px;
+  padding: 5%;
   border-radius: 25px;
 `
 
@@ -132,15 +135,24 @@ const Text = styled.div`
   font-size: large;
   font-family: Space Grotesk;
   font-weight: bold;
-  padding-left: 20%;
-  padding-right: 20%;
 
-  ${props => props.Header && css`
+  ${props => props.Back && css`
+    margin-top: 5%;
+    margin-left: 5%;
     color: white;
-    font-size: xxx-large;
+    font-size: large;
     font-family: Space Grotesk;
     font-weight: bold;
-    padding-right: 2%;
+  `}
+
+  ${props => props.Header && css`
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: xxx-large;
+  font-family: Space Grotesk;
+  font-weight: bold;
+  padding-right: 2%;
   `}
 
   ${props => props.Create && css`
@@ -150,6 +162,9 @@ const Text = styled.div`
     font-weight: bold;
     padding: 20px;
   `}
+`
+const Button = styled.button`
+  margin-left: 45%;
 `
 
 export default LoginPage;

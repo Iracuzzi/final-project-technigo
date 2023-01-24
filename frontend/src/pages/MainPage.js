@@ -33,7 +33,7 @@ const MainContent = () => {
           <Image src={Characters} alt="Characters page"/>
         </Container>
       </Link>
-      <Link to={`/porfile`} title="Go to your porfile">
+      <Link to={`/signup`} title="Create an account">
         <Container Image>
           <Image src={Porfile} alt="Porfile page"/>
         </Container>

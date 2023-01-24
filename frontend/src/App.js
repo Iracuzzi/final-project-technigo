@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import user from 'reducer/user';
-import MainContent from 'components/MainPage';
-import LoginPage from 'components/LoginPage';
-import SignupPage from 'components/SignupPage';
-import PorfilePage from 'components/PorfilePage';
-import CharacterPage from 'components/CharacterPage';
+import MainContent from 'pages/MainPage';
+import LoginPage from 'pages/LoginPage';
+import SignupPage from 'pages/SignupPage';
+import CharacterPage from 'pages/CharacterPage';
+import ShowCharPage from 'pages/ShowCharPage';
 import CharacterList from 'components/CharacterList';
 
 const reducer = combineReducers({
@@ -16,6 +16,7 @@ const reducer = combineReducers({
 const store = configureStore({reducer});
 
 export const App = () => {
+
   return (
     <>
     <Provider store={store}>
@@ -24,9 +25,8 @@ export const App = () => {
         <Route path="/" element={<MainContent />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/porfile" element={<PorfilePage />} />
         <Route path="/character" element={<CharacterPage />} />
-        <Route path="/character-list" element={<CharacterList />} />
+        <Route path="/character-list" element={<ShowCharPage />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
     </BrowserRouter>

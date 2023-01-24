@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector, batch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { API_URL } from "utils/utils";
 import user from "reducer/user";
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 const SignupPage = () => {
   const [nickname, setNickname] = useState("");
@@ -56,37 +56,40 @@ const onFormSubmit =(event) => {
         <Header>
           <Text Header>Online character creator for D&D players</Text>
         </Header>
+        <Link to={"/"} >
+          <Text Back> ← Back</Text>
+        </Link>
         <ParentElement>
-            <Container>
-                <Text>
-                  <h1>Character creator online</h1>
-                  <h2>Create a new account to enjoy the features.</h2>
-                </Text>
-                <form onSubmit={onFormSubmit}>
-                <Input 
-            required
-            type="text"
-            id="nickname"
-            value={nickname}
-            onChange={e => setNickname(e.target.value)}
-            placeholder='Nickname' />
+          <Container>
+            <Text>
+              <h1>Character creator online</h1>
+              <h2>Create a new account to enjoy the features.</h2>
+            </Text>
+            <form onSubmit={onFormSubmit}>
               <Input 
-            required
-            type="text"
-            id="username"
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-            placeholder='Username' />
-        <Input
-            required 
-            type="password" 
-            id="password" 
-            placeholder="password"
-            value={password} 
-            onChange={e => setPassword(e.target.value)}/>
-              <button type="submit" onClick={() => setMode("register")}>Submit</button>
-              </form>
-            </Container>
+                required
+                type="text"
+                id="nickname"
+                value={nickname}
+                onChange={e => setNickname(e.target.value)}
+                placeholder='Nickname' />
+              <Input 
+                required
+                type="text"
+                id="username"
+                value={username}
+                onChange={e => setUsername(e.target.value)}
+                placeholder='Username' />
+              <Input
+                required 
+                type="password" 
+                id="password" 
+                placeholder="password"
+                value={password} 
+                onChange={e => setPassword(e.target.value)}/><br></br>
+              <Button type="submit" onClick={() => setMode("register")}>Submit</Button>
+            </form>
+          </Container>
         </ParentElement>
         </>
     )
@@ -102,52 +105,64 @@ const Header = styled.div`
   `
 
 const ParentElement = styled.div`
-display: flex;
-justify-items: center;
-flex-direction: column;
-height: 100vh;
-width: 100vw;
-background-color: rgb(85, 128, 162);
-justify-content: center;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `
 
 const Container = styled.div`
-background-color: rgba(255,255,255,0.8);
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-
-height: 600px;
-width: 500px;
-border-radius: 25px;
+  background-color: rgba(255,255,255,0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 400px;
+  padding: 5%;
+  border-radius: 25px;
 `
 
 const Input = styled.input`
-margin: 20px;
-padding: 6px;
-background: transparent;
-border-top-color: transparent;
-border-left-color: transparent;
-border-right-color: transparent;
-border-bottom-color: black;
+  margin: 20px;
+  padding: 6px;
+  background: transparent;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: black;
 `
 const Text = styled.div`
-color: Black;
-font-size: large;
-font-family: Space Grotesk;
-font-weight: bold;
-padding-left: 20%;
-padding-right: 20%;
+  color: Black;
+  font-size: large;
+  font-family: Space Grotesk;
+  font-weight: bold;
 
-${props => props.Header && css`
-color: white;
-font-size: xxx-large;
-font-family: Space Grotesk;
-font-weight: bold;
-padding-right: 2%;
-`}
+  ${props => props.Back && css`
+    margin-top: 5%;
+    margin-left: 5%;
+    color: white;
+    font-size: large;
+    font-family: Space Grotesk;
+    font-weight: bold;
+  `}
+
+  ${props => props.Header && css`
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: xxx-large;
+  font-family: Space Grotesk;
+  font-weight: bold;
+  padding-right: 2%;
+  `}
 `
+const Button = styled.button`
+  margin-left: 45%;
+`
+
 export default SignupPage;

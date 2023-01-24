@@ -1,65 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector, batch } from "react-redux";
-import styled, { css } from 'styled-components'
-import { API_URL } from "utils/utils";
+import React from 'react';
 
-const CharacterList = () => {
-  const [characterList, setCharacterList] = useState([])
-  const accessToken = useSelector((store) => store.user.accessToken);
-  const [mode, setMode] = useState("character-list");
-  const fetchCharacters = () => {
-    fetch(API_URL(mode))
-      .then(res => res.json())
-      .then(data => setCharacterList(data))
-      .catch(error => console.log(error))
+const CharacterList = ({ loading, thoughtsList, setThoughtsList, onNewHearthSubmit }) => {
+  if (loading) {
+    return <h1>Loading in progres...</h1>
   }
-  useEffect(() => {
-    if (!accessToken) {
-        navigate("/login");
-    }
-}, [accessToken])
+  const onToughtCheckChange = (thought) => {
+    setThoughtsList(thoughtsList => thoughtsList.map(singleThought => {
+      if (singleThought._id === thought._id) {
+        return { ...singleThought, isChecked: !singleThought.isChecked };
+      }
+      return singleThought;
+    }));
+  }
 
   return (
-    <>
-    <ParentElement>
-      <Header>
-        <Text>Online character creator for D&D players</Text>
-      </Header>
-      <Container>
-        {characterList}
-      </Container>
-    </ParentElement>
-    </>
-  )
-} 
+    <section>
+      {thoughtsList.map(thought => (
+        <div className="container" key={thought._id}>
+          <div className='textSpace'>
+          <h4>{thought.message}</h4>
+          </div>
+            <p className="timestamp">
+              {formatDistance(new Date(thought.createdAt), Date.now(), {
+                addSuffix: true
+              })}
+            </p>
+            <div className='like'>
+            <button
+                type="button"
+                onClick={() => { onNewHearthSubmit(thought._id) }}
+                onChange={onToughtCheckChange}
+                style={{
+                  background: thought.hearts >= 1 ? '#ffdede' : '#d5d4d5'
+                }}>
+                <span className="emoji" role="img" aria-label="heart-emoji">❤️</span>
+              </button>
+              <div className="heart-counter">
+                <p>x{thought.hearts}</p>
+              </div>
+              </div>
 
-
-const ParentElement = styled.div`
-display: flex;
-justify-items: center;
-flex-direction: column;
-height: 100%;
-width: 100%;
-`
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: raw;
-`
-const Header = styled.div`
-  display: flex;
-  top: 0%;
-  justify-content: center;
-  flex-direction: raw;
-  width: 100%;
-  background-color: rgb(0,0,0);
-`
-const Text = styled.h1`
-  color: white;
-  font-size: xxx-large;
-  font-family: Space Grotesk;
-  font-weight: bold;
-  padding-right: 2%;
-`
+        </div>
+      ))}
+    </section>
+  );
+};
 
 export default CharacterList;
