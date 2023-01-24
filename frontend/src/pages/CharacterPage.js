@@ -121,42 +121,42 @@ const CharacterPage = () => {
                   onChange={e => setRace(e.target.value)}/>
                 <Input
                   required 
-                  type="text" 
+                  type="number" 
                   id="strength" 
                   placeholder="Strength"
                   value={strength} 
                   onChange={e => setStrength(e.target.value)}/>
                 <Input
                   required 
-                  type="text" 
+                  type="number" 
                   id="dexterity" 
                   placeholder="Dexterity"
                   value={dexterity} 
                   onChange={e => setDexterity(e.target.value)}/>
                 <Input
                   required 
-                  type="text" 
+                  type="number" 
                   id="constitution" 
                   placeholder="Constitution"
                   value={constitution} 
                   onChange={e => setConstitution(e.target.value)}/>
                 <Input
                   required 
-                  type="text" 
+                  type="number" 
                   id="intelligence" 
                   placeholder="Intelligence"
                   value={intelligence} 
                   onChange={e => setintelligence(e.target.value)}/>
                 <Input
                   required 
-                  type="text" 
+                  type="number" 
                   id="wisdom" 
                   placeholder="Wisdom"
                   value={wisdom} 
                   onChange={e => setWisdom(e.target.value)}/>
                 <Input
                   required 
-                  type="text" 
+                  type="number" 
                   id="charisma" 
                   placeholder="Charisma"
                   value={charisma} 
