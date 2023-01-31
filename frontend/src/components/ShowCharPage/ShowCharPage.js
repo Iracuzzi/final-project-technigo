@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector, batch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import styled, { css } from 'styled-components'
 import { API_URL } from "utils/utils";
@@ -24,7 +24,7 @@ useEffect(() => {
     setLoading(true)
     fetch('https://final-project-backend-xnbc5z4fva-lz.a.run.app/character-list')
       .then(res => res.json())
-      .then(data => setCharacterList(data.response))
+      .then(data => setCharacterList(data.characterList))
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   }

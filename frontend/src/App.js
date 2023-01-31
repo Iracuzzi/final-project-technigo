@@ -3,12 +3,11 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import user from 'reducer/user';
-import MainContent from 'pages/MainPage';
-import LoginPage from 'pages/LoginPage';
-import SignupPage from 'pages/SignupPage';
-import CharacterPage from 'pages/CharacterPage';
-import ShowCharPage from 'pages/ShowCharPage';
-import CharacterList from 'components/CharacterList';
+import MainContent from 'components/MainPAge/MainPage';
+import LoginPage from 'components/LoginPage/LoginPage';
+import SignupPage from 'components/SignupPage/SignupPage';
+import CharacterPage from 'components/CharacterPage/CharacterPage';
+import ShowCharPage from 'components/ShowCharPage/ShowCharPage';
 
 const reducer = combineReducers({
   user: user.reducer,
